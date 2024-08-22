@@ -9,7 +9,10 @@ import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
+import useSWRMutation from "swr/mutation";
+import { sendRequest } from "@/lib/sendRequest";
 
 const formSchema = z.object({
   fullName: z.string(),
@@ -23,6 +26,10 @@ const formSchema = z.object({
 export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmError, setConfirmError] = useState(false);
+  const { trigger, isMutating } = useSWRMutation(
+    "/users/register",
+    sendRequest
+  );
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -35,17 +42,24 @@ export default function Register() {
 
   const onChangeConfirm = (event) => {
     setConfirmPassword(event.target.value);
-    console.log(event.target.value, form.getValues("password"));
+
     if (event.target.value !== form.getValues("password")) {
       setConfirmError(true);
     } else {
       setConfirmError(false);
     }
   };
-  const onSubmit = (values) => {
+
+  const onSubmit = async (values) => {
     if (confirmError) return;
-    console.log(values);
+    try {
+      await trigger(values);
+      toast.success("Cadastro efetuado com sucesso");
+    } catch {
+      toast.error("Ocorreu um erro durante o envio do cadastro");
+    }
   };
+
   return (
     <div className="pt-20">
       <Card className="w-[50%] mx-auto p-10 bg-secondary">
