@@ -25,8 +25,6 @@ export default function LoginForm() {
     }
   });
 
-  console.log(form.getValues("email"));
-
   return (
     <>
       <Form {...form}>
