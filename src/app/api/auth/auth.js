@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import * as z from "zod";
 import { login } from "./_lib/login";
+import { Routes } from "@/constants/routes";
 export const {
   auth,
   signIn,
@@ -9,7 +10,7 @@ export const {
   handlers: { POST, GET }
 } = NextAuth({
   pages: {
-    signIn: "/login"
+    signIn: Routes.LOGIN
   },
   session: {
     maxAge: 12 * 60 * 60
