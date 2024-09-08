@@ -26,10 +26,7 @@ const formSchema = z.object({
 export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmError, setConfirmError] = useState(false);
-  const { trigger, isMutating } = useSWRMutation(
-    "/users/register",
-    sendRequest
-  );
+  const { trigger } = useSWRMutation("/users/register", sendRequest);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
