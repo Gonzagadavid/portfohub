@@ -62,7 +62,6 @@ export default function ProfessionalFormItem({
 
   return (
     <Card className=" w-full p-5 mt-5">
-      {console.log(index, form.formState.isDirty)}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex justify-between">

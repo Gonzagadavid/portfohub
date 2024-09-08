@@ -16,7 +16,16 @@ export const {
     maxAge: 12 * 60 * 60
   },
   callbacks: {
-    async session({ session }) {
+    async jwt({ token, user }) {
+      if (user) {
+        token.accessToken = user.accessToken;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.token = token;
+      }
       return session;
     }
   },

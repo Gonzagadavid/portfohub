@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ProfessionalFormItem from "./_components/professionalFormItem";
-import { Button } from "@/components/ui/button";
 import DynamicList from "@/components/custom/dynamicList";
 
 export default function ProfessionalExpForm() {

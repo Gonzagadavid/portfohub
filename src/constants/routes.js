@@ -23,26 +23,35 @@ export const Routes = {
 export const RoutesInfo = {
   [Routes.USER_FORM]: {
     label: "Dados pessoais",
-    icon: (size) => <SquareUser size={size} />
+    icon: (size) => <SquareUser size={size} />,
+    isPriv: true
   },
   [Routes.HARD_SKILLS_FORM]: {
     label: "Habilidades Técnicas",
-    icon: (size) => <Cog size={size} />
+    icon: (size) => <Cog size={size} />,
+    isPriv: true
   },
   [Routes.SOFT_SKILLS_FORM]: {
     label: "Habilidades pessoais",
-    icon: (size) => <UserRoundCog size={size} />
+    icon: (size) => <UserRoundCog size={size} />,
+    isPriv: true
   },
   [Routes.ACADEMIC_BG_FORM]: {
     label: "Dados Acadêmicos",
-    icon: (size) => <GraduationCap size={size} />
+    icon: (size) => <GraduationCap size={size} />,
+    isPriv: true
   },
   [Routes.PROFESSIONAL_EXP_FORM]: {
     label: "Dados Profissionais",
-    icon: (size) => <UserPen size={size} />
+    icon: (size) => <UserPen size={size} />,
+    isPriv: true
   },
   [Routes.PROJECTS_FORM]: {
     label: "Projetos",
-    icon: (size) => <FolderGit2 size={size} />
+    icon: (size) => <FolderGit2 size={size} />,
+    isPriv: true
+  },
+  [Routes.DASHBOARD]: {
+    isPriv: true
   }
 };
