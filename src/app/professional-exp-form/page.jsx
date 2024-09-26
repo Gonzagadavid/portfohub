@@ -7,11 +7,23 @@ import useSWRMutation from "swr/mutation";
 import { Button } from "@/components/ui/button";
 import { sendRequest } from "@/lib/sendRequest";
 import { toast } from "sonner";
+import useSWR from "swr";
+import { fetcher } from "@/lib/fetcher";
 
 export default function ProfessionalExpForm() {
   const [professionalList, setProfessionalList] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
   const [newItem, setNewItem] = useState(false);
 
+  const { isLoading } = useSWR("/professional", fetcher, {
+    onSuccess({ info }) {
+      setProfessionalList([...info]);
+      setIsEdit(true);
+    },
+    onError() {
+      setIsEdit(false);
+    }
+  });
   const { trigger } = useSWRMutation("/professional", sendRequest);
 
   const addItemInList = (item) => {
@@ -36,7 +48,10 @@ export default function ProfessionalExpForm() {
 
   const onSubmit = async () => {
     try {
-      await trigger(professionalList);
+      await trigger({
+        data: professionalList,
+        method: isEdit ? "PUT" : "POST"
+      });
       toast.success(
         "Suas expriências profissionais foram registradas com sucesso"
       );
@@ -63,7 +78,7 @@ export default function ProfessionalExpForm() {
         <ProfessionalFormItem />
       </DynamicList>
       <Button className="fixed right-10 bottom-10" onClick={onSubmit}>
-        Registrar
+        {isEdit ? "Salvar Alterações" : "Registrar"}
       </Button>
     </div>
   );

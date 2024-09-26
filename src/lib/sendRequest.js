@@ -7,10 +7,10 @@ const baseUrlApi = process.env.BASE_URI_API;
 export async function sendRequest(route, { arg }) {
   const session = await auth();
   const authorization = session?.token?.accessToken;
-
+  const { method = "POST", data } = arg;
   const res = await fetch(`${baseUrlApi}${route}`, {
-    method: "POST",
-    body: JSON.stringify(arg),
+    method,
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
       authorization
