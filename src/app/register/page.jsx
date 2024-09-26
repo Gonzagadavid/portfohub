@@ -47,10 +47,10 @@ export default function Register() {
     }
   };
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (data) => {
     if (confirmError) return;
     try {
-      await trigger(values);
+      await trigger({ method: "POST", data });
       toast.success("Cadastro efetuado com sucesso");
     } catch {
       toast.error("Ocorreu um erro durante o envio do cadastro");
