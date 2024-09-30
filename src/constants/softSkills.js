@@ -1,4 +1,4 @@
-export const soft_skills = [
+export const softSkills = [
   "Comunicação eficaz",
   "Trabalho em equipe",
   "Resolução de problemas",
