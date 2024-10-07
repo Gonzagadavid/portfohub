@@ -78,7 +78,7 @@ export default function AcademicFormItem({
             />
           </div>
           <div className="flex justify-between">
-            <div className="w-[40%]">
+            <div className="w-[100%]">
               <div className="flex w-full justify-between items-end">
                 <DatePicker
                   name="startDate"
@@ -93,26 +93,17 @@ export default function AcademicFormItem({
                   />
                 )}
               </div>
-              <div className="flex justify-between w-full mt-10">
-                <Label>
-                  <input
-                    type="radio"
-                    checked={currentEmployment}
-                    onClick={onChangeCurrentEmployment}
-                    className="mr-5"
-                  />
-                  Emprego atual
-                </Label>
-                {(!!index || index === 0) && form.formState.isDirty && (
-                  <Button type="submit">Salvar</Button>
-                )}
-                {!index && index !== 0 && (
-                  <Button type="submit">Adicionar</Button>
-                )}
-                {(index || index === 0) && (
-                  <Button onClick={() => removeItemList(index)}>Remover</Button>
-                )}
-              </div>
+            </div>
+            <div className="flex justify-end w-full mt-10">
+              {(!!index || index === 0) && form.formState.isDirty && (
+                <Button type="submit">Salvar</Button>
+              )}
+              {!index && index !== 0 && (
+                <Button type="submit">Adicionar</Button>
+              )}
+              {(index || index === 0) && (
+                <Button onClick={() => removeItemList(index)}>Remover</Button>
+              )}
             </div>
           </div>
         </form>
