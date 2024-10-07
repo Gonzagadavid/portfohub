@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Routes } from "@/constants/routes";
 import { useDebounce } from "@/hooks/useDebounce";
 import { headFetcher } from "@/lib/headFetcher";
 import { sendRequest } from "@/lib/sendRequest";
@@ -65,7 +64,7 @@ export default function Pathname() {
         personalizado.
       </h2>
       <div className="flex items-end w-[700px] justify-between mt-10">
-        <p className="text-[30px]">http://localhost:3000/portfolio/</p>
+        <p className="text-[30px]">{`${process.env.NEXT_PUBLIC_APP_URL}/portfolio/`}</p>
         <div className="flex flex-col relative">
           <Input
             onChange={onChange}

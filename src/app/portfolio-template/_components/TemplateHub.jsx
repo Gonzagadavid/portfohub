@@ -2,16 +2,36 @@
 
 import { templatesMap } from "@/app/portfolio/_components/templateMap";
 import { Button } from "@/components/ui/button";
+import { Routes } from "@/constants/routes";
+import { sendRequest } from "@/lib/sendRequest";
 import { camelCaseToWords } from "@/utils/camelCaseToWords";
+import { useRouter } from "next/navigation";
 import { useState, cloneElement } from "react";
+import { toast } from "sonner";
+import useSWRMutation from "swr/mutation";
 
 export default function TemplateHub({ portfolioData }) {
   const [template, setTemplate] = useState(
     portfolioData.template ?? "blackLabel"
   );
 
+  const route = useRouter();
+  const { trigger } = useSWRMutation("/portfolio/template", sendRequest, {
+    onSuccess() {
+      toast.success("Seu link para o portfólio foi registrado com sucesso!");
+    },
+    onError() {
+      toast.error("Ocorreu um erro ao tentar registar seu link!");
+    }
+  });
+
   const onChangeTemplate = (templateSelected) => {
     setTemplate(templateSelected);
+  };
+
+  const onSendTemplate = async () => {
+    await trigger({ data: { template }, method: "PUT" });
+    route.push(Routes.DASHBOARD);
   };
 
   return (
@@ -28,7 +48,10 @@ export default function TemplateHub({ portfolioData }) {
         ))}
       </div>
       {cloneElement(templatesMap[template], { portfolioData })}
-      <Button className="fixed bottom-[50px] right-[20px] z-[999]">
+      <Button
+        onClick={onSendTemplate}
+        className="fixed bottom-[50px] right-[20px] z-[999]"
+      >
         Selecionar template
       </Button>
     </div>
