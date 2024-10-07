@@ -10,6 +10,7 @@ export async function sendRequest(route, { arg }) {
   const { method = "POST", data } = arg;
   const res = await fetch(`${baseUrlApi}${route}`, {
     method,
+    cache: "no-store",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",

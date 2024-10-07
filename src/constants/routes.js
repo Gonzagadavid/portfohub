@@ -17,12 +17,13 @@ export const Routes = {
   SOFT_SKILLS_FORM: "/soft-skills-form",
   ACADEMIC_BG_FORM: "/academic-bg-form",
   PROFESSIONAL_EXP_FORM: "/professional-exp-form",
-  PROJECTS_FORM: "/projects-form"
+  PROJECTS_FORM: "/projects-form",
+  PORTFOLIO_TEMPLATE: "/portfolio-template"
 };
 
 export const RoutesInfo = {
   [Routes.USER_FORM]: {
-    label: "Dados pessoais",
+    label: "Dados Pessoais",
     icon: (size) => <SquareUser size={size} />,
     isPriv: true
   },
@@ -32,7 +33,7 @@ export const RoutesInfo = {
     isPriv: true
   },
   [Routes.SOFT_SKILLS_FORM]: {
-    label: "Habilidades pessoais",
+    label: "Habilidades Pessoais",
     icon: (size) => <UserRoundCog size={size} />,
     isPriv: true
   },
@@ -52,6 +53,9 @@ export const RoutesInfo = {
     isPriv: true
   },
   [Routes.DASHBOARD]: {
+    isPriv: true
+  },
+  [Routes.PORTFOLIO_TEMPLATE]: {
     isPriv: true
   }
 };
