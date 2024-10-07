@@ -13,6 +13,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 import useSWRMutation from "swr/mutation";
 import { sendRequest } from "@/lib/sendRequest";
+import { useRouter } from "next/navigation";
+import { Routes } from "@/constants/routes";
 
 const formSchema = z.object({
   fullName: z.string(),
@@ -26,6 +28,7 @@ const formSchema = z.object({
 export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmError, setConfirmError] = useState(false);
+  const router = useRouter();
   const { trigger } = useSWRMutation("/users/register", sendRequest);
 
   const form = useForm({
@@ -52,6 +55,7 @@ export default function Register() {
     try {
       await trigger({ method: "POST", data });
       toast.success("Cadastro efetuado com sucesso");
+      router.push(Routes.LOGIN);
     } catch {
       toast.error("Ocorreu um erro durante o envio do cadastro");
     }

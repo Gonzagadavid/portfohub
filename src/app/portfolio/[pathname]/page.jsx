@@ -4,7 +4,7 @@ import { getPortfolioData } from "../_lib/getPortfolioData";
 
 export default async function Portfolio({ params: { pathname } }) {
   const portfolioData = await getPortfolioData(pathname);
-  const template = templatesMap?.[portfolioData?.template];
+  const template = templatesMap?.[portfolioData?.template ?? "blackLabel"];
 
   return (
     <Suspense fallback={"...loading"}>
