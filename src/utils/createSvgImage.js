@@ -7,7 +7,7 @@ export const createSvgImage = (
   height = 20,
   originColor = false
 ) => {
-  const IconElement = icons[`si${iconTitle}`];
+  const IconElement = icons?.[`si${iconTitle}`];
   const svg = IconElement.svg.replace(
     "svg ",
     `svg fill="#${originColor ? IconElement.hex : "fff"}" `
