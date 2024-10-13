@@ -1,10 +1,11 @@
 "use server";
-import { signIn } from "@/app/api/auth/auth";
+import { signIn, signOut } from "@/app/api/auth/auth";
+import { Routes } from "@/constants/routes";
 import { AuthError } from "next-auth";
 
 export async function authenticate(prevState, formData) {
   try {
-    await signIn("credentials", formData);
+    await signIn("credentials", formData, { redirectTo: Routes.DASHBOARD });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -16,4 +17,8 @@ export async function authenticate(prevState, formData) {
     }
     throw error;
   }
+}
+
+export async function logout() {
+  await signOut({ redirectTo: Routes.HOME });
 }

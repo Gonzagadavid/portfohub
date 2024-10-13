@@ -15,6 +15,7 @@ import useSWRMutation from "swr/mutation";
 import { sendRequest } from "@/lib/sendRequest";
 import { useRouter } from "next/navigation";
 import { Routes } from "@/constants/routes";
+import Image from "next/image";
 
 const formSchema = z.object({
   fullName: z.string(),
@@ -63,8 +64,10 @@ export default function Register() {
 
   return (
     <div className="pt-20">
-      <Card className="w-[50%] mx-auto p-10 bg-secondary">
-        <CardTitle className="text-center">Cadastro</CardTitle>
+      <Card className="w-[50%] mx-auto px-10 pb-10 pt-5 bg-secondary">
+        <div className="w-full flex justify-center pb-10">
+          <Image width={290} height={290} src="/Logotipos-white.svg" alt="" />
+        </div>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -100,7 +103,7 @@ export default function Register() {
                 </div>
               </div>
               <div className="flex justify-end">
-                <Button type="submit">Registrar</Button>
+                <Button type="submit">Cadastrar</Button>
               </div>
             </form>
           </Form>

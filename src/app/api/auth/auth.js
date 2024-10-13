@@ -9,9 +9,6 @@ export const {
   signOut,
   handlers: { POST, GET }
 } = NextAuth({
-  pages: {
-    signIn: Routes.LOGIN
-  },
   session: {
     maxAge: 12 * 60 * 60
   },

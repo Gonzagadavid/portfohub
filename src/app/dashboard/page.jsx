@@ -24,7 +24,6 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1>DashBoard</h1>
       <MenuBoard checkInfo={data?.checkInfo} />
       {!!missingInfo.length && (
         <Card className="p-10 border border-[#7027d7]">

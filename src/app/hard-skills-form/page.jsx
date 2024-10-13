@@ -43,7 +43,6 @@ export default function HardSkillsForm() {
 
   return (
     <div className="flex flex-col items-center pt-10 relative min-h-lvh">
-      <h1>Formulário de habilidades técnicas</h1>
       <div className="flex mt-10 justify-between">
         <HardSkillsSelect addStack={addStack} stackList={new Set(stackList)} />
       </div>
