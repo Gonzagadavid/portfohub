@@ -4,6 +4,7 @@ import { validateExp } from "@/utils/validateExp";
 import { redirect } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Routes } from "@/constants/routes";
+import Link from "next/link";
 
 const ExpiresModal = dynamic(() =>
   import("@/components/custom/ExpiresModal", { ssr: false })
@@ -18,6 +19,9 @@ export default async function Login() {
     <div className="flex items-center justify-center w-full h-full  flex-col ">
       <ExpiresModal />
       <LoginForm />
+      <Link className="text-primary" href={Routes.REGISTER}>
+        Cadastrar-se
+      </Link>
     </div>
   );
 }

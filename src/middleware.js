@@ -3,9 +3,15 @@ import { Routes, RoutesInfo } from "./constants/routes";
 import { auth } from "./app/api/auth/auth";
 import { validateExp } from "./utils/validateExp";
 
+const outPages = new Set([Routes.REGISTER, Routes.HOME]);
+
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
   const session = await auth();
+
+  if (session && outPages.has(pathname)) {
+    return NextResponse.redirect(new URL(Routes.DASHBOARD, request.url));
+  }
 
   if (
     RoutesInfo?.[pathname] &&

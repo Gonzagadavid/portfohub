@@ -18,7 +18,8 @@ export const Routes = {
   ACADEMIC_BG_FORM: "/academic-bg-form",
   PROFESSIONAL_EXP_FORM: "/professional-exp-form",
   PROJECTS_FORM: "/projects-form",
-  PORTFOLIO_TEMPLATE: "/portfolio-template"
+  PORTFOLIO_TEMPLATE: "/portfolio-template",
+  PORTFOLIO: "/portfolio"
 };
 
 export const RoutesInfo = {

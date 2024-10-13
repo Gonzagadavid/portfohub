@@ -8,6 +8,7 @@ import { Form } from "@/components/ui/form";
 import FormInput from "./formFieldInput";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -30,6 +31,14 @@ export default function LoginForm() {
       <Form {...form}>
         <form action={form.handleSubmit(dispatch)} className="space-y-3">
           <div className="flex-1 rounded-lg bg-secondary px-6 pb-4 pt-8 w-96">
+            <div className="w-full flex justify-center pb-5">
+              <Image
+                width={240}
+                height={240}
+                src="/Logotipos-white.svg"
+                alt=""
+              />
+            </div>
             <div className="w-full">
               <div>
                 <FormInput control={form.control} name="email" label="E-mail" />
@@ -67,7 +76,7 @@ function LoginButton() {
 
   return (
     <Button className="mt-4 w-full" type="submit" aria-disabled={pending}>
-      Log in
+      Entrar
     </Button>
   );
 }
