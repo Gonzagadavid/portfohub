@@ -3,6 +3,7 @@
 - [Intalação](#instalacao)
 - [Instruções de colaboração](#intrucoes-de-colaboracao)
   - [Criar template](#criar-template)
+- [Deploy](#deploy)
 
 ## Instalação
 
@@ -63,3 +64,9 @@ type PortfolioData = {
   ];
 };
 ```
+
+# Deploy
+
+- Utilizado a vercel para o deploy
+
+[techfolio](https://portfohub.vercel.app/)
