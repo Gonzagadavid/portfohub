@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState, Fragment } from "react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { createSvgImage } from "@/utils/createSvgImage";
 import { iconsTitlesSet } from "@/constants/iconstitles";
 
-// Fonte mais suave para dar um tom moderno e natural.
 const greenLabelFont = "font-[Poppins]";
 
 const GreenLabel = ({ portfolioData }) => {
@@ -13,7 +12,6 @@ const GreenLabel = ({ portfolioData }) => {
     portfolioData;
   const [activeTab, setActiveTab] = useState("about");
 
-  // Função para renderizar o conteúdo ativo
   const renderContent = () => {
     switch (activeTab) {
       case "about":
@@ -158,9 +156,7 @@ const GreenLabel = ({ portfolioData }) => {
       {/* Header */}
       <header className="flex flex-col items-center space-y-4 mb-12">
         <Avatar className="w-[200px] h-[200px] m-5">
-          <AvatarImage
-            src={personalData.image ?? "https://github.com/shadcn.png"}
-          />
+          <AvatarImage />
         </Avatar>
         <h1 className={`text-5xl font-bold text-green-900 ${greenLabelFont}`}>
           {personalData.fullName}
