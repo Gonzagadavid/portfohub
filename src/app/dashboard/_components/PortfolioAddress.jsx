@@ -12,7 +12,7 @@ import { toast } from "sonner";
 export default function PortfolioAddress() {
   const { data } = useSWR("/portfolio/pathname", fetcher);
   const portfolioUrl = data
-    ? `${process.env.NEXT_PUBLIC_APP_URL}/portfolio/${data.pathname}`
+    ? `${process.env.NEXT_PUBLIC_APP_URL}/portfolio${data.pathname}`
     : "";
 
   const onCopy = () => {

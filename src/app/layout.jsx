@@ -16,7 +16,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "p-[85px]")}>
+      <body
+        className={cn(
+          inter.className,
+          "p-[85px]",
+          "bg-gradient-to-t from-[#1C0942] via-black  to-black h-[100%]"
+        )}
+      >
         <Header />
         <SessionProvider
           refetchOnWindowFocus={false}
