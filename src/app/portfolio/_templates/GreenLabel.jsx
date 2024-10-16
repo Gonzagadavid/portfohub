@@ -26,18 +26,20 @@ const GreenLabel = ({ portfolioData }) => {
               {personalData.description}
             </p>
             <div className="mt-6 flex justify-center space-x-8">
-              <a
-                href={personalData.network}
-                className="text-green-700 hover:text-green-900 transition-colors"
-              >
-                {personalData.network}
-              </a>
-              <a
-                href={`mailto:${personalData.email}`}
-                className="text-green-700 hover:text-green-900 transition-colors"
-              >
-                {personalData.email}
-              </a>
+              {Object.keys(personalData.network).map((key) => {
+                const network = personalData.network[key];
+                return (
+                  <a
+                    href={network}
+                    key={network}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 underline"
+                  >
+                    {network}
+                  </a>
+                );
+              })}
             </div>
           </section>
         );
@@ -124,20 +126,14 @@ const GreenLabel = ({ portfolioData }) => {
                 <h3 className="text-2xl font-bold text-green-900">
                   {project.projectName}
                 </h3>
-                {Object.keys(personalData.network).map((key) => {
-                  const network = personalData.network[key];
-                  return (
-                    <a
-                      href={network}
-                      key={network}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 underline"
-                    >
-                      {network}
-                    </a>
-                  );
-                })}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-600 underline"
+                >
+                  {project.link}
+                </a>
                 <p className="text-gray-600 mt-2">{project.description}</p>
                 <div className="mt-4 flex space-x-4 justify-end">
                   {project.icons.map((icon, idx) => (
