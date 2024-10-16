@@ -134,7 +134,7 @@ const GreenLabel = ({ portfolioData }) => {
                       rel="noopener noreferrer"
                       className="text-gray-400 underline"
                     >
-                      {personalData.network}
+                      {network}
                     </a>
                   );
                 })}
