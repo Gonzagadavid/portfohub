@@ -34,14 +34,20 @@ const RedLabel = ({ portfolioData }) => {
           {personalData.phrase}
         </p>
         <div className="space-y-4 text-red-300">
-          <a
-            href={personalData.network}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            {personalData.network}
-          </a>
+          {Object.keys(personalData.network).map((key) => {
+            const network = personalData.network[key];
+            return (
+              <a
+                href={network}
+                key={network}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 underline"
+              >
+                {personalData.network}
+              </a>
+            );
+          })}
           <p>{personalData.email}</p>
           <p>
             {personalData.address.city}, {personalData.address.state}

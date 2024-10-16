@@ -124,14 +124,20 @@ const GreenLabel = ({ portfolioData }) => {
                 <h3 className="text-2xl font-bold text-green-900">
                   {project.projectName}
                 </h3>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-600 underline"
-                >
-                  {project.link}
-                </a>
+                {Object.keys(personalData.network).map((key) => {
+                  const network = personalData.network[key];
+                  return (
+                    <a
+                      href={network}
+                      key={network}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 underline"
+                    >
+                      {personalData.network}
+                    </a>
+                  );
+                })}
                 <p className="text-gray-600 mt-2">{project.description}</p>
                 <div className="mt-4 flex space-x-4 justify-end">
                   {project.icons.map((icon, idx) => (

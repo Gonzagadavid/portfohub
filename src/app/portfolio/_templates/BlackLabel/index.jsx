@@ -40,14 +40,20 @@ const BlackLabel = ({ portfolioData }) => {
           </div>
         </div>
         <div className="text-right">
-          <a
-            href={personalData.network}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 underline"
-          >
-            {personalData.network}
-          </a>
+          {Object.keys(personalData.network).map((key) => {
+            const network = personalData.network[key];
+            return (
+              <a
+                href={network}
+                key={network}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 underline"
+              >
+                {personalData.network}
+              </a>
+            );
+          })}
           <p>{personalData.email}</p>
           <p>
             {personalData.address.city}, {personalData.address.state}
