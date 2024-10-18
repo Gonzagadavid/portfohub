@@ -22,7 +22,7 @@ export default function Header() {
     return null;
 
   return (
-    <div className="w-[100%] h-[75px] fixed z-[999] top-0 flex justify-between items-center px-10 left-0 bg-black">
+    <div className="w-[100%] h-[75px] fixed top-0 flex justify-between items-center px-10 left-0 bg-black">
       <HeaderStartContainer />
       <Image width={150} height={150} src="/Logotipos-white.svg" alt="" />
       <HeaderEndContainer />
