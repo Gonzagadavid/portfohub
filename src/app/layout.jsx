@@ -19,8 +19,8 @@ export default function RootLayout({ children }) {
       <body
         className={cn(
           inter.className,
-          "p-[85px]",
-          "bg-gradient-to-t from-[#1C0942] via-black  to-black h-[100%]"
+          "pt-[85px]",
+          "bg-gradient-to-t from-[#1C0942] via-black  to-black"
         )}
       >
         <Header />
