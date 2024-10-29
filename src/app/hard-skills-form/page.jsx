@@ -46,7 +46,7 @@ export default function HardSkillsForm() {
       <div className="flex mt-10 justify-between">
         <HardSkillsSelect addStack={addStack} stackList={new Set(stackList)} />
       </div>
-      <div className="grid grid-cols-7 w-full mb-10">
+      <div className="flex justify-around flex-wrap w-full mb-10">
         {stackList.map((stack, index) => (
           <Card
             className="h-48 w-48 flex flex-col items-center m-10 px-3"
@@ -72,3 +72,4 @@ export default function HardSkillsForm() {
     </div>
   );
 }
+

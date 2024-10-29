@@ -35,8 +35,8 @@ export default function HardSkillsSelect({ addStack, stackList }) {
   };
 
   return (
-    <Command className="rounded-lg border-none shadow-md md:min-w-[450px] h-[200px]">
-      <div className="flex mt-10 justify-between">
+    <Command className="rounded-lg border-none shadow-md md:min-w-[450px] h-[200px] bg-transparent">
+      <div className="flex mt-10 justify-between ">
         <Input
           placeholder="Selecione suas stacks..."
           onChange={onChange}
@@ -52,7 +52,10 @@ export default function HardSkillsSelect({ addStack, stackList }) {
       >
         {options.slice(0, 10).map((title, i) => (
           <CommandItem key={`${title}${i}`}>
-            <div className="w-full flex justify-between px-5" onClick={onClick}>
+            <div
+              className="w-full flex justify-between px-5 text-[15px]"
+              onClick={onClick}
+            >
               {title}
               {createSvgImage(title)}
             </div>
@@ -62,3 +65,4 @@ export default function HardSkillsSelect({ addStack, stackList }) {
     </Command>
   );
 }
+
