@@ -1,3 +1,5 @@
+"use client";
+
 import { Menu, LogOut, Home } from "lucide-react";
 import {
   Sheet,
@@ -6,47 +8,59 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 } from "@/components/ui/sheet";
-import Link from "next/link"; 
+import Link from "next/link";
 import { Routes, RoutesInfo } from "@/constants/routes";
 import { logout } from "@/lib/actions";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const routesMenu = Object.keys(RoutesInfo);
 
 export function HeaderStartContainer() {
-  return (
-    
-    <div className="my-4">
-     
-      <Sheet >
-        <SheetTrigger asChild>
-          <button>
-            <Menu size={30} />
-          </button>
-        </SheetTrigger>
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
-        <SheetContent side="left" >
+  const onClose = () => setIsOpen(false);
+  const onOpen = () => setIsOpen(true);
+  const onOpenChange = (bool) => setIsOpen(bool);
+
+  if (pathname === Routes.HOME) return <div />;
+  return (
+    <div>
+      <Sheet open={isOpen} onOpenChange={onOpenChange}>
+        <button onClick={onOpen}>
+          <Menu size={30} />
+        </button>
+
+        <SheetContent side="left">
           <SheetHeader>
             <SheetTitle>Menu</SheetTitle>
           </SheetHeader>
-          
+
           <hr className="my-4" />
 
           <div className="flex flex-col gap-4 px-4">
             <Link href={Routes.DASHBOARD}>
-              <button className="flex items-center gap-2 text-left text-sm font-medium">
+              <button
+                onClick={onClose}
+                className="flex items-center gap-2 text-left text-sm font-medium"
+              >
                 <Home size={18} /> Página Inicial
               </button>
             </Link>
 
             {routesMenu
-              .filter((route) => RoutesInfo[route]?.label) 
+              .filter((route) => RoutesInfo[route]?.label)
               .map((route) => (
                 <Link href={route} key={route}>
-                  <button className="flex items-center gap-2 text-left text-sm font-medium">
-                    {RoutesInfo[route].icon && RoutesInfo[route].icon(18)} 
-                    {RoutesInfo[route].label} 
+                  <button
+                    onClick={onClose}
+                    className="flex items-center gap-2 text-left text-sm font-medium"
+                  >
+                    {RoutesInfo[route].icon && RoutesInfo[route].icon(18)}
+                    {RoutesInfo[route].label}
                   </button>
                 </Link>
               ))}
@@ -60,13 +74,9 @@ export function HeaderStartContainer() {
               </button>
             </form>
           </div>
-
-          <SheetFooter>
-            <SheetClose asChild>
-            </SheetClose>
-          </SheetFooter>
         </SheetContent>
       </Sheet>
     </div>
   );
 }
+
