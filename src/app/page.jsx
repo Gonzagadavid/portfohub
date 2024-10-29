@@ -1,6 +1,19 @@
 import Image from "next/image";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
-import { FaUserPlus, FaIdCard, FaTools, FaProjectDiagram, FaShareAlt, FaRocket } from "react-icons/fa";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent
+} from "@/components/ui/card";
+import {
+  FaUserPlus,
+  FaIdCard,
+  FaTools,
+  FaProjectDiagram,
+  FaShareAlt,
+  FaRocket
+} from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -11,7 +24,13 @@ export default function Home() {
             Seja bem-vindo(a) ao Tech.folio
           </h1>
           <p className="text-base md:text-lg leading-relaxed md:leading-normal">
-            Tech.folio é uma plataforma desenvolvida por estudantes da <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, projetada para ajudar futuros profissionais de tecnologia a criarem portfólios digitais de forma fácil e intuitiva. Com a <b>Tech.folio</b>, você pode apresentar seus projetos, experiências e habilidades de maneira atraente, facilitando a conexão com empregadores e destacando-se no mercado de trabalho.
+            Tech.folio é uma plataforma desenvolvida por estudantes da{" "}
+            <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>,
+            projetada para ajudar futuros profissionais de tecnologia a criarem
+            portfólios digitais de forma fácil e intuitiva. Com a{" "}
+            <b>Tech.folio</b>, você pode apresentar seus projetos, experiências
+            e habilidades de maneira atraente, facilitando a conexão com
+            empregadores e destacando-se no mercado de trabalho.
           </p>
         </div>
         <div className="w-full md:w-[40%] flex justify-center md:justify-end">
@@ -34,8 +53,12 @@ export default function Home() {
           <Card className="flex flex-col items-center text-center bg-[rgba(109,40,217,0.6)] rounded-lg p-4">
             <CardHeader className="flex flex-col items-center">
               <FaUserPlus className="text-white text-4xl mb-3" />
-              <CardTitle className="text-lg font-semibold">Criar Conta</CardTitle>
-              <CardDescription className="text-sm">Cadastre-se facilmente para começar a montar seu portfólio.</CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                Criar Conta
+              </CardTitle>
+              <CardDescription className="text-sm">
+                Cadastre-se facilmente para começar a montar seu portfólio.
+              </CardDescription>
             </CardHeader>
             <CardContent />
           </Card>
@@ -43,8 +66,12 @@ export default function Home() {
           <Card className="flex flex-col items-center text-center bg-[rgba(109,40,217,0.6)] rounded-lg p-4">
             <CardHeader className="flex flex-col items-center">
               <FaIdCard className="text-white text-4xl mb-3" />
-              <CardTitle className="text-lg font-semibold">Preencher Dados Pessoais</CardTitle>
-              <CardDescription className="text-sm">Complete seu perfil com informações pessoais e de contato.</CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                Preencher Dados Pessoais
+              </CardTitle>
+              <CardDescription className="text-sm">
+                Complete seu perfil com informações pessoais e de contato.
+              </CardDescription>
             </CardHeader>
             <CardContent />
           </Card>
@@ -52,8 +79,13 @@ export default function Home() {
           <Card className="flex flex-col items-center text-center bg-[rgba(109,40,217,0.6)] rounded-lg p-4">
             <CardHeader className="flex flex-col items-center">
               <FaTools className="text-white text-4xl mb-3" />
-              <CardTitle className="text-lg font-semibold">Adicionar Habilidades</CardTitle>
-              <CardDescription className="text-sm">Liste suas habilidades pessoais e técnicas para destacar seu perfil.</CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                Adicionar Habilidades
+              </CardTitle>
+              <CardDescription className="text-sm">
+                Liste suas habilidades pessoais e técnicas para destacar seu
+                perfil.
+              </CardDescription>
             </CardHeader>
             <CardContent />
           </Card>
@@ -61,8 +93,13 @@ export default function Home() {
           <Card className="flex flex-col items-center text-center bg-[rgba(109,40,217,0.6)] rounded-lg p-4">
             <CardHeader className="flex flex-col items-center">
               <FaProjectDiagram className="text-white text-4xl mb-3" />
-              <CardTitle className="text-lg font-semibold">Adicionar Projetos</CardTitle>
-              <CardDescription className="text-sm">Apresente os projetos que desenvolveu, destacando seu portfólio e experiências práticas.</CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                Adicionar Projetos
+              </CardTitle>
+              <CardDescription className="text-sm">
+                Apresente os projetos que desenvolveu, destacando seu portfólio
+                e experiências práticas.
+              </CardDescription>
             </CardHeader>
             <CardContent />
           </Card>
@@ -70,8 +107,13 @@ export default function Home() {
           <Card className="flex flex-col items-center text-center bg-[rgba(109,40,217,0.6)] rounded-lg p-4">
             <CardHeader className="flex flex-col items-center">
               <FaShareAlt className="text-white text-4xl mb-3" />
-              <CardTitle className="text-lg font-semibold">Compartilhar</CardTitle>
-              <CardDescription className="text-sm">Compartilhe seu portfólio com recrutadores ou colegas e aumente sua rede de contatos.</CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                Compartilhar
+              </CardTitle>
+              <CardDescription className="text-sm">
+                Compartilhe seu portfólio com recrutadores ou colegas e aumente
+                sua rede de contatos.
+              </CardDescription>
             </CardHeader>
             <CardContent />
           </Card>
@@ -79,13 +121,17 @@ export default function Home() {
           <Card className="flex flex-col items-center text-center bg-[rgba(109,40,217,0.6)] rounded-lg p-4">
             <CardHeader className="flex flex-col items-center">
               <FaRocket className="text-white text-4xl mb-3" />
-              <CardTitle className="text-lg font-semibold">Alcançar o Sucesso</CardTitle>
-              <CardDescription className="text-sm">Com seu portfólio bem estruturado, esteja pronto para alcançar novas oportunidades e se destacar no mercado.</CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                Alcançar o Sucesso
+              </CardTitle>
+              <CardDescription className="text-sm">
+                Com seu portfólio bem estruturado, esteja pronto para alcançar
+                novas oportunidades e se destacar no mercado.
+              </CardDescription>
             </CardHeader>
             <CardContent />
           </Card>
         </div>
-
       </section>
 
       <section className="flex flex-col md:flex-row w-full px-6 md:px-10 items-center gap-8 md:gap-12 py-10 md:py-20">
@@ -94,7 +140,10 @@ export default function Home() {
             Colabore Conosco!
           </h2>
           <p className="text-base md:text-lg leading-relaxed">
-            O Tech.folio é um projeto open-source, e você é convidado(a) a contribuir com novas ideias, melhorias e funcionalidades. Nossa missão é criar uma plataforma cada vez mais inclusiva e acessível para ajudar futuros profissionais a mostrarem seu potencial.
+            O Tech.folio é um projeto open-source, e você é convidado(a) a
+            contribuir com novas ideias, melhorias e funcionalidades. Nossa
+            missão é criar uma plataforma cada vez mais inclusiva e acessível
+            para ajudar futuros profissionais a mostrarem seu potencial.
           </p>
           <div className="flex justify-center md:justify-start">
             <a
