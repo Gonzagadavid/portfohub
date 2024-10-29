@@ -22,27 +22,25 @@ const formSchema = z.object({
   email: z.string().email().min(1, "E-mail profissional é obrigatório"),
   address: z.object({
     city: z.string().min(1, "Cidade é obrigatória"),
-    state: z.string().min(1, "Estado é obrigatório"),
+    state: z.string().min(1, "Estado é obrigatório")
   }),
   description: z.string().min(1, "Resumo Profissional é obrigatório"),
   network: z.object({
     github: z.string().optional(),
     linkedin: z.string().optional(),
     instagram: z.string().optional(),
-    whatsapp: z.string().optional(),
+    whatsapp: z.string().optional()
   }),
-  phrase: z.string().optional(),
+  phrase: z.string().optional()
 });
 
 export default function PersonalDataForm() {
   const [isEditable, setIsEditable] = useState(false);
-  const {
-    data: response, isLoading
-  } = useSWR("/personal-data", fetcher, {
+  const { data: response, isLoading } = useSWR("/personal-data", fetcher, {
     onSuccess() {
-      setIsEditable(true)
+      setIsEditable(true);
     }
-  })
+  });
   const { trigger } = useSWRMutation("/personal-data", sendRequest);
 
   const form = useForm({
@@ -52,24 +50,26 @@ export default function PersonalDataForm() {
       email: "",
       address: {
         city: "",
-        state: "",
+        state: ""
       },
       description: "",
       network: {
         github: "https://github.com/",
         linkedin: "https://linkedin.com/in/",
         instagram: "https://instagram.com/",
-        whatsapp: "https://wa.me/",
+        whatsapp: "https://wa.me/"
       },
-      phrase: "",
-    }, values: response
+      phrase: ""
+    },
+    values: response
   });
 
   const onSubmit = async (data) => {
     try {
       await trigger({
-        data, method: isEditable? "PUT": "POST"
-      })
+        data,
+        method: isEditable ? "PUT" : "POST"
+      });
       toast.success("Seus dados pessoais foram registrados com sucesso");
     } catch {
       toast.error("Ocorreu um erro ao enviar o formulário de dados pessoais.");
@@ -79,41 +79,41 @@ export default function PersonalDataForm() {
   return (
     <div className="flex flex-col items-center w-[80%] mx-auto">
       <h1 className="mt-5">Formulário de Dados Pessoais</h1>
-      <Card className="w-full p-5 mt-5 mb-5">
+      <Card className="w-full p-5 mt-5 mb-5 bg-transparent border-none  md:border-secondary md:border-solid md:shadow-sm md:shadow-secondary">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
             <FormFieldInput
-              name='fullName'
-              label='Nome Completo'
+              name="fullName"
+              label="Nome Completo"
               control={form.control}
             />
             <FormFieldInput
-              name='email'
-              label='E-mail'
+              name="email"
+              label="E-mail"
               control={form.control}
             />
             <AddressInputField
-              name='address'
-              label='Endereço'
+              name="address"
+              label="Endereço"
               control={form.control}
             />
             <NetworkInputField
-              name='network'
-              label='Redes Sociais'
+              name="network"
+              label="Redes Sociais"
               control={form.control}
             />
             <DescriptionTextArea
-              name='description'
-              label='Resumo Profissional'
+              name="description"
+              label="Resumo Profissional"
               control={form.control}
             />
             <FormFieldInput
-              name='phrase'
-              label='Frase Motivacional'
+              name="phrase"
+              label="Frase Motivacional"
               control={form.control}
             />
             <div className="flex justify-end">
-              <Button type="submit">{isEditable? "Editar": "Salvar"}</Button>
+              <Button type="submit">{isEditable ? "Editar" : "Salvar"}</Button>
             </div>
           </form>
         </Form>
@@ -121,3 +121,4 @@ export default function PersonalDataForm() {
     </div>
   );
 }
+

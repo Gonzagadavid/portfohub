@@ -42,11 +42,10 @@ export default function SoftSkillsForm() {
 
   return (
     <div className="flex flex-col items-center pt-10 relative min-h-lvh">
-      <h1>Formulário de habilidades pessoais</h1>
       <div className="flex mt-10 justify-between">
         <SoftSkillsSelect addSkill={addSkill} skillList={new Set(skillList)} />
       </div>
-      <div className="grid grid-cols-5 w-full mb-10">
+      <div className="flex justify-around flex-wrap w-full mb-10">
         {skillList.map((skill, index) => (
           <Card
             className="h-32 w-80 flex flex-col items-center m-10 px-3"
@@ -69,3 +68,4 @@ export default function SoftSkillsForm() {
     </div>
   );
 }
+

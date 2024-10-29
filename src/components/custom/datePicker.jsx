@@ -33,7 +33,7 @@ export default function DatePicker({ name, label, control, className }) {
                 <Button
                   variant={"outline"}
                   className={cn(
-                    "w-[240px] pl-3 text-left font-normal",
+                    "w-[180px] pl-3 text-left font-normal",
                     !field.value && "text-muted-foreground"
                   )}
                 >
@@ -60,3 +60,4 @@ export default function DatePicker({ name, label, control, className }) {
     />
   );
 }
+

@@ -64,7 +64,7 @@ export default function Register() {
 
   return (
     <div className="pt-20">
-      <Card className="w-[50%] mx-auto px-10 pb-10 pt-5 bg-secondary">
+      <Card className="lg:w-[50%] w-full mx-auto px-10 pb-10 pt-5 bg-transparent border-none">
         <div className="w-full flex justify-center pb-10">
           <Image width={290} height={290} src="/Logotipos-white.svg" alt="" />
         </div>
@@ -112,3 +112,4 @@ export default function Register() {
     </div>
   );
 }
+

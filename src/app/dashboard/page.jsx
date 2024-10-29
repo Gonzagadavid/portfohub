@@ -26,7 +26,7 @@ export default function Dashboard() {
     <div className="flex flex-col items-center">
       <MenuBoard checkInfo={data?.checkInfo} />
       {!!missingInfo.length && (
-        <Card className="p-10 border border-[#7027d7]">
+        <Card className="p-5 border border-[#7027d7] mt-5 w-full sm:w-[80%] lg:w-[60%] 2xl:w-[50%]">
           <CardTitle className="text-[#7027d7]">
             Complete suas Informações para a continuidade na construção do seu
             portfólio
@@ -46,3 +46,4 @@ export default function Dashboard() {
     </div>
   );
 }
+

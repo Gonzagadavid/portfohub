@@ -34,7 +34,7 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
   };
 
   return (
-    <Command className="rounded-lg border-none shadow-md md:min-w-[450px] h-[200px]">
+    <Command className="rounded-lg border-none shadow-md md:min-w-[450px] h-[200px]  bg-transparent">
       <div className="flex mt-10 justify-between">
         <Input
           placeholder="Selecione suas stacks..."
@@ -60,3 +60,4 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
     </Command>
   );
 }
+

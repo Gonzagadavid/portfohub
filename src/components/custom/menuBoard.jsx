@@ -21,12 +21,12 @@ const checkListKeys = {
 
 export default function MenuBoard({ checkInfo }) {
   return (
-    <div className="flex justify-around  w-[70%] p-10 mt-10">
+    <div className="flex justify-around items-center w-full flex-wrap">
       {routesMenu.map((route) => {
         const isComplete = checkInfo?.[checkListKeys[route]];
         return (
           <Link key={route} href={route}>
-            <Card className=" flex flex-col  items-center w-44 h-60 p-5">
+            <Card className=" flex flex-col m-5 items-center w-56 h-60 p-5">
               <div className="flex justify-end w-full">
                 {isComplete ? (
                   <Check className="text-[#03C03C]" />
@@ -47,3 +47,4 @@ export default function MenuBoard({ checkInfo }) {
     </div>
   );
 }
+

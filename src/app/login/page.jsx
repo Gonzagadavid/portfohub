@@ -16,7 +16,7 @@ export default async function Login() {
     redirect(Routes.DASHBOARD);
   }
   return (
-    <div className="flex items-center justify-center w-full h-full  flex-col ">
+    <div className="flex items-center justify-center w-full h-full flex-col">
       <ExpiresModal />
       <LoginForm />
       <Link className="text-primary" href={Routes.REGISTER}>
@@ -25,3 +25,4 @@ export default async function Login() {
     </div>
   );
 }
+
