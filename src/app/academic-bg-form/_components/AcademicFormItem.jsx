@@ -60,51 +60,51 @@ export default function AcademicFormItem({
   };
 
   return (
-    <Card className=" w-full p-5 mt-5">
+    <Card className="w-full p-5 mt-5">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="flex justify-between">
+          <div className="flex flex-col sm:flex-row justify-between gap-4">
             <FormFieldInput
               name="institution"
               label="Instituição"
               control={form.control}
-              className="w-[55%]"
+              className="w-full"
             />
             <FormFieldInput
               name="degree"
               label="Curso"
               control={form.control}
-              className="w-[40%]"
+              className="w-full"
             />
           </div>
-          <div className="flex justify-between">
-            <div className="w-[100%]">
-              <div className="flex w-full justify-between items-end">
-                <DatePicker
-                  name="startDate"
-                  label="Date de início"
-                  control={form.control}
-                />
-                {!currentEmployment && (
-                  <DatePicker
-                    name="endDate"
-                    label="Data final"
-                    control={form.control}
-                  />
-                )}
-              </div>
-            </div>
-            <div className="flex justify-end w-full mt-10">
-              {(!!index || index === 0) && form.formState.isDirty && (
-                <Button type="submit">Salvar</Button>
-              )}
-              {!index && index !== 0 && (
-                <Button type="submit">Adicionar</Button>
-              )}
-              {(index || index === 0) && (
-                <Button onClick={() => removeItemList(index)}>Remover</Button>
-              )}
-            </div>
+
+          <div className="flex flex-col sm:flex-row justify-between gap-4 lg:w-1/3 sm:w-full">
+            <DatePicker
+              name="startDate"
+              label="Data de início"
+              control={form.control}
+              className="w-full"
+            />
+            {!currentEmployment && (
+              <DatePicker
+                name="endDate"
+                label="Data final"
+                control={form.control}
+                className="w-full"
+              />
+            )}
+          </div>
+
+          <div className="flex justify-end gap-2 mt-5">
+            {(!!index || index === 0) && form.formState.isDirty && (
+              <Button type="submit">Salvar</Button>
+            )}
+            {!index && index !== 0 && (
+              <Button type="submit">Adicionar</Button>
+            )}
+            {(index || index === 0) && (
+              <Button onClick={() => removeItemList(index)}>Remover</Button>
+            )}
           </div>
         </form>
       </Form>
