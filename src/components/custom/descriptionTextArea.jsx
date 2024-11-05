@@ -13,7 +13,7 @@ export default function DescriptionTextArea({
   label, 
   control, 
   className, 
-  height // Nova propriedade para altura
+  height
 }) {
   return (
     <FormField
@@ -29,7 +29,6 @@ export default function DescriptionTextArea({
                 className
               )}
               {...field}
-              placeholder="Digite seu resumo profissional aqui..."
             />
           </FormControl>
           <FormMessage />

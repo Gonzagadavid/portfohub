@@ -64,7 +64,7 @@ export default function ProfessionalExpForm() {
 
   return (
     <div className="flex flex-col items-center w-[80%] mx-auto p-5">
-      <h1>Formulário experiência profissional</h1>
+      <h1 className="text-center">Formulário de Experiências Profissionais</h1>
       <DynamicList
         addItemInList={addItemInList}
         updateItemList={updateItemList}
@@ -77,9 +77,11 @@ export default function ProfessionalExpForm() {
       >
         <ProfessionalFormItem />
       </DynamicList>
-      <Button className="fixed right-10 bottom-10" onClick={onSubmit}>
-        {isEdit ? "Salvar Alterações" : "Registrar"}
-      </Button>
+      <div className="mt-5 w-full flex justify-center">
+        <Button className="mb-10" onClick={onSubmit}>
+          {isEdit ? "Salvar Alterações" : "Registrar"}
+        </Button>
+      </div>
     </div>
   );
 }

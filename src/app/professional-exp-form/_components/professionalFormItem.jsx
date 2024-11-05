@@ -12,6 +12,7 @@ import DatePicker from "@/components/custom/datePicker";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import FormFieldTextArea from "@/components/custom/formFieldTextArea";
+import DescriptionTextArea from "@/components/custom/descriptionTextArea";
 
 const formSchema = z.object({
   company: z.string().min(3, { message: "Nome da empresa é obrigatório" }),
@@ -61,65 +62,64 @@ export default function ProfessionalFormItem({
   };
 
   return (
-    <Card className=" w-full p-5 mt-5">
+    <Card className="w-full p-5 mt-5">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row md:gap-4">
             <FormFieldInput
               name="company"
               label="Empresa"
               control={form.control}
-              className="w-[55%]"
+              className="flex-1"
             />
             <FormFieldInput
               name="role"
               label="Cargo"
               control={form.control}
-              className="w-[40%]"
+              className="flex-1"
             />
           </div>
-          <div className="flex justify-between">
-            <FormFieldTextArea
-              name="description"
-              label="Descrição"
+          <DescriptionTextArea
+            name="description"
+            label="Descrição"
+            control={form.control}
+          />
+          <div className="flex flex-col md:flex-row gap-4 mt-4">
+            <DatePicker
+              name="startDate"
+              label="Data de início"
               control={form.control}
-              className="w-[55%] h-[100px]"
+              style={{ width: '300px' }}
             />
-            <div className="w-[40%]">
-              <div className="flex w-full justify-between items-end">
-                <DatePicker
-                  name="startDate"
-                  label="Date de início"
-                  control={form.control}
-                />
-                {!currentEmployment && (
-                  <DatePicker
-                    name="endDate"
-                    label="Data final"
-                    control={form.control}
-                  />
-                )}
-              </div>
-              <div className="flex justify-between w-full mt-10">
-                <Label>
-                  <input
-                    type="radio"
-                    checked={currentEmployment}
-                    onClick={onChangeCurrentEmployment}
-                    className="mr-5"
-                  />
-                  Emprego atual
-                </Label>
-                {(!!index || index === 0) && form.formState.isDirty && (
-                  <Button type="submit">Salvar</Button>
-                )}
-                {!index && index !== 0 && (
-                  <Button type="submit">Adicionar</Button>
-                )}
-                {(index || index === 0) && (
-                  <Button onClick={() => removeItemList(index)}>Remover</Button>
-                )}
-              </div>
+            {!currentEmployment && (
+              <DatePicker
+                name="endDate"
+                label="Data final"
+                control={form.control}
+                style={{ width: '300px' }}
+              />
+            )}
+          </div>
+          <div className="flex flex-col justify-between mt-2">
+            <Label className="flex items-center">
+              <input
+                type="radio"
+                checked={currentEmployment}
+                onClick={onChangeCurrentEmployment}
+                className="mr-2"
+              />
+              Emprego atual
+            </Label>
+            <div className="flex justify-end gap-2 mt-5">
+              {(!!index || index === 0) && form.formState.isDirty && (
+                <Button type="submit">Salvar</Button>
+              )}
+              {!index && index !== 0 && (
+                <Button type="submit">Adicionar</Button>
+              )}
+              {(index || index === 0) && (
+                <Button onClick={() => removeItemList(index)}>Remover</Button>
+              )}
             </div>
           </div>
         </form>
