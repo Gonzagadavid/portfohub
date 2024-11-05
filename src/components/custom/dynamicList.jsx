@@ -26,7 +26,7 @@ export default function DynamicList({
         })
       )}
       {newItem && cloneElement(children, { addItemInList })}
-      <div className=" flex justify-end p-5 w-full">
+      <div className=" flex justify-center p-5 w-full">
         {!newItem && (
           <Button onClick={() => setNewItem(true)}>{addLabel}</Button>
         )}
