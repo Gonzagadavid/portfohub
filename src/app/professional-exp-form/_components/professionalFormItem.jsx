@@ -79,7 +79,7 @@ export default function ProfessionalFormItem({
               className="flex-1"
             />
           </div>
-          <DescriptionTextArea
+          <FormFieldTextArea
             name="description"
             label="Descrição"
             control={form.control}

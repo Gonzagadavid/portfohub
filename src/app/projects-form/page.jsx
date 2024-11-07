@@ -60,7 +60,7 @@ export default function ProjectsForm() {
 
   return (
     <div className="flex flex-col items-center w-[80%] mx-auto p-5">
-      <h1>Formulário de projetos</h1>
+      <h1 className="text-center">Formulário de Projetos</h1>
       <DynamicList
         addItemInList={addItemInList}
         updateItemList={updateItemList}
@@ -73,9 +73,11 @@ export default function ProjectsForm() {
       >
         <ProjectFormItem />
       </DynamicList>
-      <Button className="fixed right-10 bottom-10" onClick={onSubmit}>
-        {isEdit ? "Salvar Alterações" : "Registrar"}
-      </Button>
+      <div className="mt-5 w-full flex justify-center">
+        <Button className="mb-10" onClick={onSubmit}>
+          {isEdit ? "Salvar Alterações" : "Registrar"}
+        </Button>
+      </div>
     </div>
   );
 }
