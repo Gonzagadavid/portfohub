@@ -22,13 +22,16 @@ export default function PortfolioAddress() {
   };
 
   return (
-    <Card className="w-[500px] h-[100px] border  flex justify-around items-center">
-      <Link href={portfolioUrl}>
-        <CardTitle>{portfolioUrl}</CardTitle>
+    <Card className="w-full max-w-[465px] h-auto p-4 border flex flex-col md:flex-row justify-between items-center gap-4">
+      <Link href={portfolioUrl} className="text-center md:text-left break">
+        <CardTitle className="text-[20px] sm:text-[18px] break-all">
+          {portfolioUrl}
+        </CardTitle>
       </Link>
-      <Button onClick={onCopy} size="sm" variant="ghost">
+      <Button onClick={onCopy} size="sm" variant="ghost" className="flex-shrink-0">
         <ClipboardCopy />
       </Button>
     </Card>
+
   );
 }
