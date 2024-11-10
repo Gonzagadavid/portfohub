@@ -38,6 +38,7 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
       <div className="flex mt-10 justify-between">
         <Input
           placeholder="Selecione suas stacks..."
+          aria-label="Selecione suas stacks"
           onChange={onChange}
           value={input}
           onFocus={onFocus}

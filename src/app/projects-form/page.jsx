@@ -5,6 +5,7 @@ import DynamicList from "@/components/custom/dynamicList";
 import useSWRMutation from "swr/mutation";
 import { Button } from "@/components/ui/button";
 import { sendRequest } from "@/lib/sendRequest";
+import { redirect } from "next/navigation";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
@@ -53,6 +54,7 @@ export default function ProjectsForm() {
         method: isEdit ? "PUT" : "POST"
       });
       toast.success("Seus projetos foram registradas com sucesso");
+      redirect(Routes.DASHBOARD);
     } catch {
       toast.error("Ocorreu um erro no envio do formulário de projeto");
     }

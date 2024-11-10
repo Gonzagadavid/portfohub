@@ -5,6 +5,7 @@ import { iconsTitlesSet } from "@/constants/iconstitles";
 import { fetcher } from "@/lib/fetcher";
 import { sendRequest } from "@/lib/sendRequest";
 import { createSvgImage } from "@/utils/createSvgImage";
+import { redirect } from "next/navigation";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -28,6 +29,7 @@ export default function HardSkillsForm() {
     try {
       await trigger({ data: stackList, method: isEditable ? "PUT" : "POST" });
       toast.success("Suas stacks foram registradas com sucesso");
+      redirect(Routes.DASHBOARD);
     } catch {
       toast.error("Ocorreu um erro no envio de hard skills");
     }

@@ -39,7 +39,7 @@ export default function LoginForm() {
                 width={240}
                 height={240}
                 src="/Logotipos-white.svg"
-                alt=""
+                alt="Logo da aplicação"
               />
             </div>
             <div className="w-full">

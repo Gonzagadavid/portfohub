@@ -108,7 +108,7 @@ export default function ProfessionalFormItem({
                 onClick={onChangeCurrentEmployment}
                 className="mr-2"
               />
-              Emprego atual
+              É meu emprego atual
             </Label>
             <div className="flex justify-end gap-2 mt-5">
               {(!!index || index === 0) && form.formState.isDirty && (
