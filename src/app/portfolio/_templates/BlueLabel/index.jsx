@@ -5,6 +5,8 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import Professional from "./_components/Professional";
 import Skills from "./_components/Skills";
 import Projects from "./_components/Projects";
+import { createSvgImage } from "@/utils/createSvgImage";
+import { netWorkIcons } from "../iconsMap";
 
 const BlueLabel = ({ portfolioData }) => {
   const { professional, personalData, softSkills, hardSkills, projects } =
@@ -40,20 +42,22 @@ const BlueLabel = ({ portfolioData }) => {
           </div>
         </div>
         <div className="text-blue-200 text-right">
-          {Object.keys(personalData.network).map((key) => {
-            const network = personalData.network[key];
-            return (
-              <a
+        <div className="flex">
+            {Object.keys(personalData.network).map((key) => {
+              const network = personalData.network[key];
+              return (
+                <a
                 href={network}
                 key={network}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 underline"
-              >
-                {network}
-              </a>
-            );
-          })}
+                className="text-gray-400 underline m-3"
+                >
+                  {createSvgImage(netWorkIcons[key], 35, 35)}
+                </a>
+              );
+            })}
+          </div>
           <p>{personalData.email}</p>
           <p>
             {personalData.address.city}, {personalData.address.state}

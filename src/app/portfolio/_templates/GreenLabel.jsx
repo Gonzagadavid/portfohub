@@ -4,6 +4,7 @@ import React, { useState, Fragment } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { createSvgImage } from "@/utils/createSvgImage";
 import { iconsTitlesSet } from "@/constants/iconstitles";
+import { netWorkIcons } from "./iconsMap";
 
 const greenLabelFont = "font-[Poppins]";
 
@@ -25,18 +26,18 @@ const GreenLabel = ({ portfolioData }) => {
             <p className="text-lg text-gray-600 max-w-2xl">
               {personalData.description}
             </p>
-            <div className="mt-6 flex justify-center space-x-8">
+            <div className="flex mt-6 flex justify-center space-x-8">
               {Object.keys(personalData.network).map((key) => {
                 const network = personalData.network[key];
                 return (
                   <a
-                    href={network}
-                    key={network}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 underline"
+                  href={network}
+                  key={network}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 underline m-3"
                   >
-                    {network}
+                    {createSvgImage(netWorkIcons[key], 35, 35, true)}
                   </a>
                 );
               })}

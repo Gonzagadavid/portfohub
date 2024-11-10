@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { iconsTitlesSet } from "@/constants/iconstitles";
 import { createSvgImage } from "@/utils/createSvgImage";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { netWorkIcons } from "./iconsMap";
 
 const RedLabel = ({ portfolioData }) => {
   const {
@@ -34,20 +35,22 @@ const RedLabel = ({ portfolioData }) => {
           {personalData.phrase}
         </p>
         <div className="space-y-4 text-red-300">
-          {Object.keys(personalData.network).map((key) => {
-            const network = personalData.network[key];
-            return (
-              <a
+          <div className="flex">
+            {Object.keys(personalData.network).map((key) => {
+              const network = personalData.network[key];
+              return (
+                <a
                 href={network}
                 key={network}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 underline"
-              >
-                {network}
-              </a>
-            );
-          })}
+                className="text-gray-400 underline m-3"
+                >
+                  {createSvgImage(netWorkIcons[key], 35, 35)}
+                </a>
+              );
+            })}
+          </div>
           <p>{personalData.email}</p>
           <p>
             {personalData.address.city}, {personalData.address.state}
