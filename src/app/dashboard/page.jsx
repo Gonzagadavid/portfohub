@@ -1,4 +1,5 @@
 "use client";
+
 import MenuBoard from "@/components/custom/menuBoard";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { fetcher } from "@/lib/fetcher";
