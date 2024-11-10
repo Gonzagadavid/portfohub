@@ -96,7 +96,7 @@ export default function PersonalDataForm() {
         image = newBlob?.url ?? ''
       }
       await trigger({
-        data: {...data, image},
+        data: {...data, image: image ?? oldImage},
         method: isEditable ? "PUT" : "POST"
       });
       toast.success("Seus dados pessoais foram registrados com sucesso");
