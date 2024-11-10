@@ -3,14 +3,14 @@ import { createSvgImage } from "@/utils/createSvgImage";
 import { Fragment } from "react";
 import { blackLabelFont } from "..";
 
-export default function Projects({ projects }) {
+export default function Projects({ projects  }) {
   return (
     <section>
       <h2 className={`text-4xl font-bold text-gray-100 mb-6 ${blackLabelFont}`}>
         Projetos
       </h2>
       <div className="space-y-10">
-        {projects.map((project, index) => (
+        {projects?.map((project, index) => (
           <div key={index}>
             <div className="flex justify-between items-center">
               <h3 className="text-2xl text-white">{project.projectName}</h3>
