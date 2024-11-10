@@ -26,7 +26,7 @@ export default function Header() {
       <HeaderStartContainer />
 
       <div className="absolute left-1/2 transform -translate-x-1/2">
-        <Image width={150} height={150} src="/Logotipos-white.svg" alt="" />
+        <Image width={150} height={150} src="/Logotipos-white.svg" alt="Logo da aplicação" />
       </div>
 
       <div className="absolute right-10">

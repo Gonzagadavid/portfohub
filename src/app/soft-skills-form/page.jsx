@@ -7,6 +7,7 @@ import useSWRMutation from "swr/mutation";
 import { fetcher } from "@/lib/fetcher";
 import { sendRequest } from "@/lib/sendRequest";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 import { Card, CardTitle } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { toast } from "sonner";
@@ -27,6 +28,7 @@ export default function SoftSkillsForm() {
     try {
       await trigger({ data: skillList, method: isEditable ? "PUT" : "POST" });
       toast.success("Suas skills foram registradas com sucesso");
+      redirect(Routes.DASHBOARD);
     } catch {
       toast.error("Ocorreu um erro no envio de soft skills");
     }
@@ -52,7 +54,7 @@ export default function SoftSkillsForm() {
             key={skill}
           >
             <div className="w-full flex justify-end ">
-              <Button size="sm" variant="ghost" onClick={removeStack(index)}>
+              <Button size="sm" aria-label="Remove" variant="ghost" onClick={removeStack(index)}>
                 <X />
               </Button>
             </div>
