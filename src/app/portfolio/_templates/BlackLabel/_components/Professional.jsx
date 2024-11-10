@@ -7,7 +7,7 @@ export default function Professional({ professional }) {
         Experiência Profissional
       </h2>
       <div className="space-y-8">
-        {professional.map((job, index) => (
+        {professional?.map((job, index) => (
           <div key={index} className="space-y-4">
             <div className="flex justify-between items-start">
               <div>
