@@ -41,7 +41,7 @@ const formSchema = z.object({
 export default function PersonalDataForm() {
   const [isEditable, setIsEditable] = useState(false);
   const [imageFile, setImage] = useState();
-  const [oldImage, setOldImage] = useState('')
+  const [oldImage, setOldImage] = useState("https://github.com/shadcn.png")
   const { data: response} = useSWR("/personal-data", fetcher, {
     onSuccess() {
       setIsEditable(true);
@@ -111,7 +111,7 @@ export default function PersonalDataForm() {
             <Avatar className="w-[200px] h-[200px] m-5">
 
             <AvatarImage
-            src={ imageFile ? URL.createObjectURL(imageFile) :  (oldImage || "https://github.com/shadcn.png")}
+            src={ imageFile ? URL.createObjectURL(imageFile) : oldImage}
             />
             </Avatar>
           <TooltipProvider >
