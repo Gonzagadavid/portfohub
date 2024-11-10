@@ -22,7 +22,7 @@ export default function PortfolioAddress() {
   };
 
   return (
-    <Card className="w-[500px] h-[100px] border  flex justify-around items-center">
+    <Card className="min-w-[500px] h-[100px] border px-2  flex justify-around items-center">
       <Link href={portfolioUrl}>
         <CardTitle>{portfolioUrl}</CardTitle>
       </Link>
