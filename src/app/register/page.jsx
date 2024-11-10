@@ -16,6 +16,7 @@ import { sendRequest } from "@/lib/sendRequest";
 import { useRouter } from "next/navigation";
 import { Routes } from "@/constants/routes";
 import Image from "next/image";
+import Link from "next/link";
 
 const formSchema = z.object({
   fullName: z.string(),
@@ -107,6 +108,11 @@ export default function Register() {
               </div>
             </form>
           </Form>
+          <div className="text-primary text-center w-full">
+            <Link className="text-primary text-center w-full" href={Routes.LOGIN}>
+              Entrar
+            </Link>
+          </div>
         </CardContent>
       </Card>
     </div>
