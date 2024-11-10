@@ -118,7 +118,7 @@ const GreenLabel = ({ portfolioData }) => {
             >
               Projetos
             </h2>
-            {projects.map((project, index) => (
+            {projects?.map((project, index) => (
               <div
                 key={index}
                 className="bg-white p-6 rounded-lg shadow-lg flex flex-col"
