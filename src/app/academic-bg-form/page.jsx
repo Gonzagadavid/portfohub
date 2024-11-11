@@ -6,7 +6,8 @@ import useSWRMutation from "swr/mutation";
 import { Button } from "@/components/ui/button";
 import { sendRequest } from "@/lib/sendRequest";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation';
+import { Routes } from "@/constants/routes";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import AcademicFormItem from "./_components/AcademicFormItem";
@@ -15,6 +16,7 @@ export default function AcademicBgForm() {
   const [academicList, setAcademicList] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [newItem, setNewItem] = useState(false);
+  const router = useRouter();
 
   useSWR("/academic", fetcher, {
     onSuccess({ info }) {
@@ -54,7 +56,7 @@ export default function AcademicBgForm() {
         method: isEdit ? "PUT" : "POST"
       });
       toast.success("Suas informações acadêmica foram registradas com sucesso");
-      redirect(Routes.DASHBOARD);
+      router.push(Routes.DASHBOARD);
     } catch {
       toast.error(
         "Ocorreu um erro no envio do formulário de informações acadêmica"
