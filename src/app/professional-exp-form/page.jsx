@@ -6,7 +6,8 @@ import DynamicList from "@/components/custom/dynamicList";
 import useSWRMutation from "swr/mutation";
 import { Button } from "@/components/ui/button";
 import { sendRequest } from "@/lib/sendRequest";
-import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation';
+import { Routes } from "@/constants/routes";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
@@ -15,6 +16,7 @@ export default function ProfessionalExpForm() {
   const [professionalList, setProfessionalList] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [newItem, setNewItem] = useState(false);
+  const router = useRouter();
 
   const { isLoading } = useSWR("/professional", fetcher, {
     onSuccess({ info }) {
@@ -56,7 +58,7 @@ export default function ProfessionalExpForm() {
       toast.success(
         "Suas expriências profissionais foram registradas com sucesso"
       );
-      redirect(Routes.DASHBOARD);
+      router.push(Routes.DASHBOARD);
     } catch {
       toast.error(
         "Ocorreu um erro no envio do formulário de experiência profissional"
