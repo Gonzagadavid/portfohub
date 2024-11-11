@@ -22,11 +22,16 @@ export default function Header() {
     return null;
 
   return (
-    <div className="w-full h-[75px] fixed z-[999] top-0 flex justify-between items-center px-10 left-0 bg-black">
+    <div className="w-full h-[75px] absolute top-0 left-0 flex justify-between items-center px-10 bg-black z-60">
       <HeaderStartContainer />
-      <Image width={150} height={150} src="/Logotipos-white.svg" alt="" />
-      <HeaderEndContainer />
+
+      <div className="absolute left-1/2 transform -translate-x-1/2">
+        <Image width={150} height={150} src="/Logotipos-white.svg" alt="" />
+      </div>
+
+      <div className="absolute right-10">
+        <HeaderEndContainer />
+      </div>
     </div>
   );
 }
-
