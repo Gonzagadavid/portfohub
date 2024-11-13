@@ -20,6 +20,8 @@ import { Input } from "@/components/ui/input";
 import { TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Tooltip, TooltipContent } from "@radix-ui/react-tooltip";
 import { AvatarImage, Avatar } from "@/components/ui/avatar";
+import { useRouter } from "next/navigation";
+import { Routes } from "@/constants/routes";
 
 const formSchema = z.object({
   fullName: z.string().min(1, "Nome Completo é obrigatório"),
@@ -41,6 +43,7 @@ const formSchema = z.object({
 export default function PersonalDataForm() {
   const [isEditable, setIsEditable] = useState(false);
   const [imageFile, setImage] = useState();
+  const router = useRouter();
   const [oldImage, setOldImage] = useState("https://github.com/shadcn.png")
   const { data: response} = useSWR("/personal-data", fetcher, {
     onSuccess() {
@@ -100,6 +103,7 @@ export default function PersonalDataForm() {
         method: isEditable ? "PUT" : "POST"
       });
       toast.success("Seus dados pessoais foram registrados com sucesso");
+      router.push(Routes.DASHBOARD);
     } catch {
       toast.error("Ocorreu um erro ao enviar o formulário de dados pessoais.");
     }
