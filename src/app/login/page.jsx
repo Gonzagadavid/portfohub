@@ -16,13 +16,33 @@ export default async function Login() {
     redirect(Routes.DASHBOARD);
   }
   return (
-    <div className="flex items-center justify-center w-full h-full flex-col">
-      <ExpiresModal />
-      <LoginForm />
-      <Link className="text-primary" href={Routes.REGISTER}>
+    <div
+      className="flex items-center justify-center w-full h-full flex-col"
+      role="main"
+      aria-labelledby="login-heading"
+    >
+      <ExpiresModal
+        aria-hidden="true"
+        aria-live="polite"
+        role="dialog"
+        aria-labelledby="expires-modal-title"
+        aria-describedby="expires-modal-description"
+      />
+
+      <LoginForm
+        aria-label="Formulário de Login"
+        role="form"
+      />
+
+      <Link
+        className="text-primary"
+        href={Routes.REGISTER}
+        aria-label="Cadastrar-se"
+        role="button"
+        tabIndex={0}>
         Cadastrar-se
       </Link>
-    </div>
+    </div >
   );
 }
 
