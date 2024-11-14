@@ -46,22 +46,50 @@ export default function HardSkillsForm() {
   };
 
   return (
-    <div className="flex flex-col items-center pt-10 relative min-h-lvh">
+    <div className="flex flex-col items-center pt-10 relative min-h-lvh"
+      role="region"
+      aria-labelledby="hard-skills-section"
+    >
+      <h1 id="hard-skills-section" className="sr-only">Formulário de Hard Skills</h1>
+
       <div className="flex mt-10 justify-between">
-        <HardSkillsSelect addStack={addStack} stackList={new Set(stackList)} />
+        <HardSkillsSelect
+          addStack={addStack}
+          stackList={new Set(stackList)}
+        />
       </div>
-      <div className="flex justify-around flex-wrap w-full mb-10">
+      <div className="flex justify-around flex-wrap w-full mb-10"
+        role="list"
+        aria-label="Lista de stacks selecionadas"
+      >
         {stackList.map((stack, index) => (
           <Card
             className="h-48 w-48 flex flex-col items-center m-10 px-3"
             key={stack}
+            role="listitem"
+            aria-labelledby={`stack-title-${index}`}
+            aria-describedby={`stack-description-${index}`}
+            tabIndex={0}
           >
             <div className="w-full flex justify-end ">
-              <Button size="sm" variant="ghost" onClick={removeStack(index)}>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={removeStack(index)}
+                aria-label={`Remove ${stack}`}
+                role="button"
+                tabIndex={0}
+                aria-pressed="false"
+              >
                 <X />
               </Button>
             </div>
-            <CardTitle className="pt-2 break-all">{stack}</CardTitle>
+            <CardTitle
+              id={`stack-title-${index}`}
+              className="pt-2 break-all"
+            >
+              {stack}
+            </CardTitle>
             <CardContent className="mt-5">
               {iconsTitlesSet.has(stack) ? createSvgImage(stack, 50, 50) : ""}
             </CardContent>
@@ -69,7 +97,13 @@ export default function HardSkillsForm() {
         ))}
       </div>
       <div className="fixed bottom-5 right-10">
-        <Button size="lg" onClick={onSave}>
+        <Button
+          size="lg"
+          onClick={onSave}
+          aria-label="Salvar alterações nas hard skills"
+          role="button"
+          tabIndex={0}
+          >
           Salvar Alterações
         </Button>
       </div>
