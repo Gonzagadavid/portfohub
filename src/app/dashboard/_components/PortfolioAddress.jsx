@@ -18,15 +18,19 @@ export default function PortfolioAddress() {
   const onCopy = () => {
     copy(portfolioUrl);
 
-    toast.info("O endereço do seu portfólio foi copiado para o clipboard");
+    toast.info("O endereço do seu portfólio foi copiado para o clipboard", {
+      ariaLive: "polite",
+    });
   };
 
   return (
-    <Card className="min-w-[500px] h-[100px] border px-2  flex justify-around items-center">
-      <Link href={portfolioUrl}>
-        <CardTitle>{portfolioUrl}</CardTitle>
+    <Card className="w-full max-w-[465px] h-auto p-4 border flex flex-col md:flex-row justify-between items-center gap-4">
+      <Link href={portfolioUrl} className="text-center md:text-left break">
+        <CardTitle className="text-[20px] sm:text-[18px] break-all">
+          {portfolioUrl}
+        </CardTitle>
       </Link>
-      <Button onClick={onCopy} size="sm" variant="ghost">
+      <Button onClick={onCopy} size="sm" variant="ghost" className="flex-shrink-0">
         <ClipboardCopy />
       </Button>
     </Card>
