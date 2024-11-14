@@ -65,7 +65,7 @@ export default function AcademicBgForm() {
   };
 
   return (
-    <div className="flex flex-col items-center w-[80%] mx-auto p-5">
+    <div className="flex flex-col items-center w-[80%] mx-auto p-5 pt-[86px]">
       <h1 className="text-center">Formulário de Dados Acadêmicos</h1>
       <DynamicList
         addItemInList={addItemInList}

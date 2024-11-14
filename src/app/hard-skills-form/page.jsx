@@ -68,7 +68,7 @@ export default function HardSkillsForm() {
           </Card>
         ))}
       </div>
-      <div className="absolute bottom-5 right-10">
+      <div className="fixed bottom-5 right-10">
         <Button size="lg" onClick={onSave}>
           Salvar Alterações
         </Button>

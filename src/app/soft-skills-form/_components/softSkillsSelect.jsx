@@ -49,10 +49,11 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
       </div>
       <CommandList
         className={`${showList ? "visible" : "invisible"} w-[335px]`}
+      
       >
-        {options.map((skill, i) => (
-          <CommandItem key={`${skill}${i}`}>
-            <div className="w-full flex justify-between px-5" onClick={onClick}>
+        {options.sort((a, b) => a < b ? -1 : 1).map((skill, i) => (
+          <CommandItem key={`${skill}${i}`} >
+            <div className="w-full flex justify-between px-5" onClick={onClick} >
               {skill}
             </div>
           </CommandItem>

@@ -81,7 +81,7 @@ const NetworkInputField = ({ label, control }) => {
                             <label htmlFor="whatsapp" className="block mb-1 text-sm">WhatsApp</label>
                             <Input
                                 id="whatsapp"
-                                placeholder="Insira o link para o WhatsApp (https://wa.me/...)"
+                                placeholder="Insira o link para o WhatsApp (https://wa.me/5511999999999)"
                                 {...field}
                                 className="text-sm" 
                             />

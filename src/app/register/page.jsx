@@ -19,12 +19,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const formSchema = z.object({
-  fullName: z.string(),
+  fullName: z.string().refine((data) => /\w{3,} \w{3,}/.test(data), {message: "adicione nome e sobrenome"}),
   email: z.string().email({ message: "e-mail inválido" }),
   password: z
     .string()
     .min(6, { message: "a senha deve conter no mínimo 6 caracteres" })
-    .max(8, { message: "a senha deve conter no máximo 8 caracteres" })
 });
 
 export default function Register() {
