@@ -63,8 +63,16 @@ export default function ProjectsForm() {
   };
 
   return (
-    <div className="flex flex-col items-center w-[80%] mx-auto p-5">
-      <h1 className="text-center">Formulário de Projetos</h1>
+    <div
+      className="flex flex-col items-center w-[80%] mx-auto p-5"
+      role="region"
+      aria-labelledby="form-header"
+      tabIndex={0}
+    >
+      <h1 id="form-header" className="text-center" tabIndex={0}>
+        Formulário de Projetos
+      </h1>
+
       <DynamicList
         addItemInList={addItemInList}
         updateItemList={updateItemList}
@@ -74,11 +82,19 @@ export default function ProjectsForm() {
         list={projectList}
         newItem={newItem}
         setNewItem={setNewItem}
+        aria-label="Lista dinâmica de projetos"
+        tabIndex={0}
       >
         <ProjectFormItem />
       </DynamicList>
+
       <div className="mt-5 w-full flex justify-center">
-        <Button className="mb-10" onClick={onSubmit}>
+        <Button
+          className="mb-10"
+          onClick={onSubmit}
+          aria-label={isEdit ? "Salvar Alterações nos Projetos" : "Registrar Projetos"}
+          tabIndex={0}
+        >
           {isEdit ? "Salvar Alterações" : "Registrar"}
         </Button>
       </div>
