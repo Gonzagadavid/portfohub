@@ -69,21 +69,37 @@ export default function AcademicFormItem({
               label="Instituição"
               control={form.control}
               className="w-full"
+              aria-label="Nome da Instituição"
+              aria-describedby="institution-desc"
+              aria-required="true"
             />
             <FormFieldInput
               name="degree"
               label="Curso"
               control={form.control}
               className="w-full"
+              aria-label="Nome do Curso"
+              aria-describedby="degree-desc"
+              aria-required="true"
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between gap-4 lg:w-1/3 sm:w-full">
+          <div
+            className="flex flex-col sm:flex-row justify-between gap-4 lg:w-1/3 sm:w-full"
+            role="group"
+            aria-labelledby="date-group-label"
+          >
+            <span id="date-group-label" className="sr-only">
+              Seleção de Datas
+            </span>
             <DatePicker
               name="startDate"
               label="Data de início"
               control={form.control}
               className="w-full"
+              aria-label="Data de Início"
+              aria-required="true"
+              tabIndex={0}
             />
             {!currentEmployment && (
               <DatePicker
@@ -91,19 +107,39 @@ export default function AcademicFormItem({
                 label="Data final"
                 control={form.control}
                 className="w-full"
+                aria-label="Data Final"
+                aria-required={!currentEmployment}
+                tabIndex={0}
               />
             )}
           </div>
 
           <div className="flex justify-end gap-2 mt-5">
             {(!!index || index === 0) && form.formState.isDirty && (
-              <Button type="submit">Salvar</Button>
+              <Button
+                type="submit"
+                aria-label="Salvar Dados Acadêmicos"
+                aria-pressed="false"
+              >
+                Salvar
+              </Button>
             )}
             {!index && index !== 0 && (
-              <Button type="submit">Adicionar</Button>
+              <Button
+                type="submit"
+                aria-label="Adicionar nova formação"
+                aria-pressed="false"
+              >
+                Adicionar
+              </Button>
             )}
             {(index || index === 0) && (
-              <Button onClick={() => removeItemList(index)}>Remover</Button>
+              <Button
+                onClick={() => removeItemList(index)}
+                aria-label="Remover esta formação"
+              >
+                Remover
+              </Button>
             )}
           </div>
         </form>

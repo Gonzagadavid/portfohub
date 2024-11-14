@@ -65,8 +65,16 @@ export default function AcademicBgForm() {
   };
 
   return (
-    <div className="flex flex-col items-center w-[80%] mx-auto p-5">
-      <h1 className="text-center">Formulário de Dados Acadêmicos</h1>
+    <div
+      className="flex flex-col items-center w-[80%] mx-auto p-5"
+      role="region"
+      aria-labelledby="academic-form-title">
+      <h1
+        id="academic-form-title"
+        className="text-center sr-only"
+      >Formulário de Dados Acadêmicos
+      </h1>
+
       <DynamicList
         addItemInList={addItemInList}
         updateItemList={updateItemList}
@@ -76,11 +84,19 @@ export default function AcademicBgForm() {
         list={academicList}
         newItem={newItem}
         setNewItem={setNewItem}
+        aria-live="polite"
+        aria-label="Lista dinâmica de informações acadêmicas"
       >
         <AcademicFormItem />
       </DynamicList>
+      
       <div className="mt-5 w-full flex justify-center">
-        <Button className="mb-10" onClick={onSubmit}>
+        <Button
+          className="mb-10"
+          onClick={onSubmit}
+          aria-label={isEdit ? "Salvar Alterações" : "Registrar"}
+          aria-pressed="false"
+        >
           {isEdit ? "Salvar Alterações" : "Registrar"}
         </Button>
       </div>
