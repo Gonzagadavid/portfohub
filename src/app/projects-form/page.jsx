@@ -69,7 +69,7 @@ export default function ProjectsForm() {
       aria-labelledby="form-header"
       tabIndex={0}
     >
-      <h1 id="form-header" className="text-center" tabIndex={0}>
+      <h1 id="form-header" className="text-center sr-only" tabIndex={0}>
         Formulário de Projetos
       </h1>
 
