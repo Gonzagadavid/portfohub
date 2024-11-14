@@ -46,26 +46,65 @@ export default function SoftSkillsForm() {
 
   return (
     <div className="flex flex-col items-center pt-10 relative min-h-lvh">
+
+      <h1 id="soft-skills-section" className="sr-only">Formulário de Soft Skills</h1>
+      
       <div className="flex mt-10 justify-between">
-        <SoftSkillsSelect addSkill={addSkill} skillList={new Set(skillList)} />
+        <SoftSkillsSelect
+          addSkill={addSkill}
+          skillList={new Set(skillList)}
+          aria-label="Selecione uma habilidade para adicionar"
+          tabIndex={0}
+          role="combobox"
+          aria-autocomplete="list"
+          aria-controls="skills-list"
+        />
       </div>
       <div className="flex justify-around flex-wrap w-full mb-10">
         {skillList.map((skill, index) => (
           <Card
             className="h-32 w-80 flex flex-col items-center m-10 px-3"
             key={skill}
+            role="region"
+            aria-labelledby={`card-title-${index}`}
+            aria-describedby={`card-description-${index}`}
+            tabIndex={0}
+            aria-live="polite"
           >
             <div className="w-full flex justify-end ">
-              <Button size="sm" aria-label="Remove" variant="ghost" onClick={removeStack(index)}>
+              <Button size="sm"
+                variant="ghost"
+                onClick={removeStack(index)}
+                aria-label={`Remover habilidade ${skill}`}
+                tabIndex={0}
+                aria-pressed="false"
+              >
                 <X />
               </Button>
             </div>
-            <CardTitle className="pt-2 break-word">{skill}</CardTitle>
+            <CardTitle className="pt-2 break-word"
+              id={`card-title-${index}`}
+              tabIndex={0}
+            >
+              {skill}
+            </CardTitle>
+            <div
+              id={`card-description-${index}`}
+              className="sr-only"
+            >
+              Descrição da habilidade {skill}
+            </div>
           </Card>
         ))}
       </div>
       <div className="fixed bottom-5 right-10">
-        <Button size="lg" onClick={onSave}>
+        <Button
+          size="lg"
+          onClick={onSave}
+          aria-label="Salvar alterações nas habilidades"
+          tabIndex={0}
+          aria-pressed="false"
+        >
           Salvar Alterações
         </Button>
       </div>

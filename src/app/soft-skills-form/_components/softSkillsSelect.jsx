@@ -23,6 +23,13 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
     if (showList) setShowList(false);
     setInput(event.target.innerText);
   };
+
+  const onSelect = (skill) => {
+    setInput(skill);
+    setShowList(false);
+    onAddSkill(skill);
+  };
+
   const onFocus = () => {
     setShowList(true);
   };
@@ -31,6 +38,12 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
     if (!input) return;
     addSkill(input);
     setInput("");
+  };
+
+  const onKeyUp = (event) => {
+    if (event.key === "Enter") {
+      onAddStack()
+    };
   };
 
   return (
@@ -42,18 +55,47 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
           onChange={onChange}
           value={input}
           onFocus={onFocus}
+          tabIndex={0}
+          aria-autocomplete="list"
+          aria-controls="skills-list"
+          onKeyUp={onKeyUp}
+          aria-activedescendant={showList ? "skills-list" : undefined}
+          role="combobox"
         />
-        <Button className="ml-5" onClick={onAddStack}>
+        <Button
+          className="ml-5"
+          onClick={onAddStack}
+          aria-label="Adicionar habilidade selecionada"
+          onKeyUp={onKeyUp}
+          tabIndex={0}
+          aria-pressed={false}
+          role="button"
+        >
           Adicionar
         </Button>
       </div>
       <CommandList
+        id="skills-list"
         className={`${showList ? "visible" : "invisible"} w-[335px]`}
-      
+        aria-live="polite"
+        role="listbox"
+        aria-expanded={showList}
       >
-        {options.sort((a, b) => a < b ? -1 : 1).map((skill, i) => (
-          <CommandItem key={`${skill}${i}`} >
-            <div className="w-full flex justify-between px-5" onClick={onClick} >
+      {options.sort((a, b) => a < b ? -1 : 1).map((skill, i) => (
+          <CommandItem
+            onSelect={onSelect}
+            key={`${skill}${i}`}
+            role="option"
+            aria-selected={input === skill}
+            aria-label={`Selecionar habilidade ${skill}`}
+            tabIndex={0}
+          >
+            <div
+              className="w-full flex justify-between px-5"
+              onClick={onClick}
+              tabIndex={0}
+              aria-activedescendant={input === skill ? "active-skill" : undefined}
+            >
               {skill}
             </div>
           </CommandItem>

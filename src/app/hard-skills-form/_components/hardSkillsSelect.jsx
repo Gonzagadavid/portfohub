@@ -20,10 +20,18 @@ export default function HardSkillsSelect({ addStack, stackList }) {
     if (!showList) setShowList(true);
     setInput(event.target.value);
   };
+
   const onClick = (event) => {
     if (showList) setShowList(false);
     setInput(event.target.innerText);
   };
+
+  const onSelect = (skill) => {
+    setInput(skill);
+    setShowList(false)
+    addStack(skill);
+  };
+
   const onFocus = () => {
     setShowList(true);
   };
@@ -34,24 +42,57 @@ export default function HardSkillsSelect({ addStack, stackList }) {
     setInput("");
   };
 
+  const onKeyUp = (event) => {
+    if (event.key === "Enter") {
+      onAddStack()
+    };
+  };
+
   return (
     <Command className="rounded-lg border-none shadow-md md:min-w-[450px] h-[200px] bg-transparent">
       <div className="flex mt-10 justify-between ">
         <Input
+          aria-
           placeholder="Selecione suas stacks..."
           onChange={onChange}
           value={input}
           onFocus={onFocus}
+          tabIndex={0}
+          role="textbox"
+          aria-autocomplete="list"
+          aria-controls="skills-list"
+          aria-activedescendant={showList && options.length ? `option-0` : ""}
+          aria-describedby="skills-description"
         />
-        <Button className="ml-5" onClick={onAddStack}>
+        <Button className="ml-5"
+          onClick={onAddStack}
+          onKeyUp={onKeyUp}
+          aria-label="Adicionar stack"
+          role="button"
+          aria-pressed="false"
+          tabIndex={0}
+          >
           Adicionar
         </Button>
       </div>
       <CommandList
+        id="skills-list"
+        role="listbox"
         className={`${showList ? "visible" : "invisible"} w-[335px]`}
+        aria-live="polite"
+        aria-labelledby="skills-description"
       >
         {options.slice(0, 10).map((title, i) => (
-          <CommandItem key={`${title}${i}`}>
+          <CommandItem
+            onSelect={onSelect}
+            key={`${title}${i}`}
+            role="option"
+            id={`option-${i}`}
+            aria-selected={input === title}
+            tabIndex={-1}
+            aria-label={`Selecionar stack ${title}`}
+            aria-describedby="skill-description"
+          >
             <div
               className="w-full flex justify-between px-5 text-[15px]"
               onClick={onClick}
