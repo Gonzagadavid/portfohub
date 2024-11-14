@@ -59,32 +59,69 @@ export default function Pathname() {
 
   return (
     <>
-      <h2 className="text-[20px]">
+      <h2 className="text-[20px]"
+        id="create-pathname-title"
+        aria-live="polite"
+        aria-label="Criação do link personalizado"
+      >
         Crie um nome de usuário para gerar o link e acessar seu portfólio
         personalizado.
       </h2>
+
       <div className="flex items-end w-[700px] justify-between mt-10">
-        <p role="presentation" className="text-[30px]">{`${process.env.NEXT_PUBLIC_APP_URL}portfolio/`}</p>
+        <label htmlFor="portfolio-url" className="sr-only">
+          URL do Portfólio
+        </label>
+        <p
+          role="presentation"
+          className="text-[30px]"
+          id="portfolio-url"
+          aria-label="Prefixo da URL do portfólio"
+        >
+          {`${process.env.NEXT_PUBLIC_APP_URL}portfolio/`}
+        </p>
+
         <div className="flex flex-col relative">
           <Input
             onChange={onChange}
             value={pathnameInput}
-            className={`text-[30px] align-baseline leading-[0px] py-0 pt-4 flex items-end m-0 border-x-0 border-t-0 focus-visible:ring-0 focus-visible:border-b-2 focus-visible:border-ring rounded-none h-[60px] w-[200px] ${
-              isUsed
-                ? "border-[#ED1414] border-b-2 focus-visible:border-[#ED1414]"
-                : "border-ring"
-            }`}
+            aria-invalid={isUsed}
+            aria-describedby={
+              isUsed ? "pathname-error" : "pathname-description"
+            }
+            aria-required="true"
+            placeholder="Seu-usuario"
+            className={`text-[30px] align-baseline leading-[0px] py-0 pt-4 flex items-end m-0 border-x-0 border-t-0 focus-visible:ring-0 focus-visible:border-b-2 focus-visible:border-ring rounded-none h-[60px] w-[200px] ${isUsed
+              ? "border-[#ED1414] border-b-2 focus-visible:border-[#ED1414]"
+              : "border-ring"
+              }`}
           />
           {pathnameInput.length >= 5 && isUsed && (
-            <p className="absolute bottom-[-45px] px-2 text-[#ED1414] text-[13px]">
+            <p
+              id="pathname-error"
+              role="alert"
+              className="absolute bottom-[-45px] px-2 text-[#ED1414] text-[13px]"
+              >
               Este path está já está sendo usado
             </p>
           )}
+          {pathnameInput.length < 5 && (
+            <p
+              id="pathname-description"
+              className="sr-only"
+            >
+              O nome de usuário deve conter no mínimo 5 caracteres.
+            </p>
+          )}
         </div>
-        <Button className="ml-5" onClick={onSendPathname}>
+        <Button 
+        className="ml-5" 
+        onClick={onSendPathname}
+        aria-label="Adicionar link do portfólio"
+        >
           Adicionar
         </Button>
-      </div>
+      </div >
     </>
   );
 }
