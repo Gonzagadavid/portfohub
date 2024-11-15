@@ -22,16 +22,16 @@ export default function RootLayout({ children }) {
           'pt-[86px]',
         )}
       >
-        <Header />
-        <SessionProvider
-          refetchOnWindowFocus={false}
-          refetchWhenOffline={false}
-        >
-          <ThemeProvider attribute="class" theme="dark">
-            {children}
-          </ThemeProvider>
-          <Toaster position="top-center" richColors />
-        </SessionProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <Header />
+          <SessionProvider
+            refetchOnWindowFocus={false}
+            refetchWhenOffline={false}
+          >
+              {children}
+            <Toaster position="top-center" richColors />
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
