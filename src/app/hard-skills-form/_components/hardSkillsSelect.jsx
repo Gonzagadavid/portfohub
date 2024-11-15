@@ -28,8 +28,7 @@ export default function HardSkillsSelect({ addStack, stackList }) {
 
   const onSelect = (skill) => {
     setInput(skill);
-    setShowList(false)
-    addStack(skill);
+    setShowList(false);
   };
 
   const onFocus = () => {

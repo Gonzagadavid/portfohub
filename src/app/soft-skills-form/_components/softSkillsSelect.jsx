@@ -27,7 +27,6 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
   const onSelect = (skill) => {
     setInput(skill);
     setShowList(false);
-    onAddSkill(skill);
   };
 
   const onFocus = () => {
@@ -43,7 +42,7 @@ export default function SoftSkillsSelect({ addSkill, skillList }) {
   const onKeyUp = (event) => {
     if (event.key === "Enter") {
       onAddStack()
-    };
+    }
   };
 
   return (
