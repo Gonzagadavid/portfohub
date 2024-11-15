@@ -6,10 +6,12 @@ import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import { createSvgImage } from "@/utils/createSvgImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTheme } from "next-themes";
 
 export default function HardSkillsSelect({ addStack, stackList }) {
   const [input, setInput] = useState("");
   const [showList, setShowList] = useState(false);
+  const { theme }= useTheme()
 
   const options = iconsTitles.filter(
     (title) =>
@@ -51,7 +53,6 @@ export default function HardSkillsSelect({ addStack, stackList }) {
     <Command className="rounded-lg border-none shadow-md md:min-w-[450px] h-[200px] bg-transparent">
       <div className="flex mt-10 justify-between ">
         <Input
-          aria-
           placeholder="Selecione suas stacks..."
           onChange={onChange}
           value={input}
@@ -97,7 +98,7 @@ export default function HardSkillsSelect({ addStack, stackList }) {
               onClick={onClick}
             >
               {title}
-              {createSvgImage(title)}
+              {createSvgImage(title, 20, 20, theme === 'root')}
             </div>
           </CommandItem>
         ))}

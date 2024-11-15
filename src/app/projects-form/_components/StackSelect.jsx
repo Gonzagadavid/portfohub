@@ -6,10 +6,12 @@ import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import { createSvgImage } from "@/utils/createSvgImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTheme } from "next-themes";
 
 export default function StackSelect({ addStack, stackList }) {
   const [input, setInput] = useState("");
   const [showList, setShowList] = useState(false);
+  const { theme } = useTheme();
 
   const options = iconsTitles.filter(
     (title) =>
@@ -62,7 +64,7 @@ export default function StackSelect({ addStack, stackList }) {
               onClick={onClick}
             >
               {title}
-              {createSvgImage(title)}
+              {createSvgImage(title, 20, 20, theme === 'root')}
             </div>
           </CommandItem>
         ))}

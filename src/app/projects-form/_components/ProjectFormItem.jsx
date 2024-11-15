@@ -12,6 +12,7 @@ import StackSelect from "./StackSelect";
 import { iconsTitlesSet } from "@/constants/iconstitles";
 import { createSvgImage } from "@/utils/createSvgImage";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 const formSchema = z.object({
   projectName: z.string().min(3, { message: "Nome do projeto é obrigatório" }),
@@ -30,6 +31,7 @@ const initialValues = {
 export default function ProjectFormItem({ addItemInList, item, removeItemList, index }) {
   const defaultValues = item || { ...initialValues };
   const [stackList, setStackList] = useState(item?.icons ?? []);
+  const { theme } = useTheme()
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -135,7 +137,7 @@ export default function ProjectFormItem({ addItemInList, item, removeItemList, i
                     tabIndex={0}
                     aria-label={`Tecnologia selecionada: ${stack}`}
                   >
-                    {iconsTitlesSet.has(stack) ? createSvgImage(stack, 100, 100) : stack}
+                    {iconsTitlesSet.has(stack) ? createSvgImage(stack, 100, 100, theme === 'root') : stack}
                     <button
                       type="button"
                       className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center"

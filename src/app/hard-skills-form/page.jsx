@@ -13,10 +13,12 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import HardSkillsSelect from "./_components/hardSkillsSelect";
+import { useTheme } from "next-themes";
 
 export default function HardSkillsForm() {
   const [isEditable, setIsEditable] = useState(false);
   const [stackList, setStackList] = useState([]);
+  const { theme } = useTheme()
   const router = useRouter();
   useSWR("/hard-skills", fetcher, {
     onSuccess({ info }) {
@@ -91,7 +93,7 @@ export default function HardSkillsForm() {
               {stack}
             </CardTitle>
             <CardContent className="mt-5">
-              {iconsTitlesSet.has(stack) ? createSvgImage(stack, 50, 50) : ""}
+              {iconsTitlesSet.has(stack) ? createSvgImage(stack, 50, 50, theme === 'root') : ""}
             </CardContent>
           </Card>
         ))}
